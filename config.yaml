@@ -1,0 +1,8 @@
+dbconfig:
+  type: mysql
+  host: 192.168.2.1
+  port: "1111"
+
+httpconfig:
+  host:192.168.2.1
+  port:1234
