@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"go-blog/config"
+	_ "go-blog/model"
+
 )
 
 func main(){
@@ -12,8 +13,8 @@ func main(){
 
 	//配置静态文件路径
 	router.Static("/public","./public")
-	cfg:= &config.Config{}
-	fmt.Println(cfg)
 
-	router.Run(":2333")
+
+
+	router.Run(config.Cfg.GetServer())
 }
