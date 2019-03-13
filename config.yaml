@@ -1,8 +1,7 @@
 dbconfig:
   type: mysql
-  host: 192.168.2.1
-  port: "1111"
-
-httpconfig:
-  host:192.168.2.1
-  port:1234
+  host: 192.168.0.1
+  port: 2333
+httpserverconfig:
+  host: 127.0.0.1
+  port: 2333
