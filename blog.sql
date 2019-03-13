@@ -11,7 +11,7 @@
  Target Server Version : 50643
  File Encoding         : 65001
 
- Date: 12/03/2019 17:59:42
+ Date: 13/03/2019 18:01:35
 */
 
 SET NAMES utf8mb4;
@@ -30,11 +30,6 @@ CREATE TABLE `article`  (
   `isdisplay` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of article
--- ----------------------------
-INSERT INTO `article` VALUES (0, '', NULL, NULL, '', NULL);
 
 -- ----------------------------
 -- Table structure for article_tag_rel
@@ -113,14 +108,6 @@ CREATE TABLE `test`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of test
--- ----------------------------
-INSERT INTO `test` VALUES ('11', '11');
-INSERT INTO `test` VALUES ('111', '111');
-INSERT INTO `test` VALUES ('1111', '1111');
-INSERT INTO `test` VALUES ('11111', '11111');
-
--- ----------------------------
 -- Table structure for type
 -- ----------------------------
 DROP TABLE IF EXISTS `type`;
@@ -137,14 +124,13 @@ CREATE TABLE `type`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES (111, '11', '11');
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键唯一，自增',
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名在注册的时候判断是否重复，然后登录的时候使用用户名和密码',
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `isactive` int(255) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 112 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
