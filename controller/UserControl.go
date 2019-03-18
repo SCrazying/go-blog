@@ -9,6 +9,7 @@ import (
 //login
 func Login(c *gin.Context) {
 
+	c.Redirect(http.StatusMovedPermanently, "/admin")
 	username := c.Query("username")
 	password := c.Query("password")
 	user := model.Login(username, password)
