@@ -11,6 +11,16 @@ import (
 func setTemplate(route *gin.Engine) {
 	route.LoadHTMLGlob("./view/*")
 }
+
+type testinferface interface {
+	rrr() string
+}
+
+type aaaa struct {
+}
+
+var aa = new(aaaa)
+
 func main() {
 
 	router := gin.Default()
@@ -19,17 +29,18 @@ func main() {
 	setTemplate(router)
 	//配置静态文件路径
 	router.Static("/public/assert", "./public/assert")
+	router.Static("/public/klorofil/", "./public/klorofil/")
 
 	//用户的路由绑定
-	router.GET("/user", controller.Login)
-	router.POST("/user", controller.Register)
-	router.GET("/users", controller.AllUser)
-	router.DELETE("/user", controller.DelUser)
+	router.POST("/user/", controller.DoLogin)
+	//router.POST("/user/id", controller.Register)
+	//router.GET("/user", controller.AllUser)
+	//router.DELETE("/user/:id", controller.DelUser)
 
 	//添加后台入口的登陆
-	router.GET("/admin", controller.AdminPage)
-	router.GET("/login", controller.AdminLogin)
-	router.GET("/register", controller.AdminRegister)
+	router.GET("/login", controller.ShowLogin)
+	//router.GET("/login", controller.AdminLogin)
+	//router.GET("/register", controller.AdminRegister)
 
 	err := router.Run(config.Cfg.GetServer())
 	if err != nil {

@@ -18,23 +18,4 @@ func init() {
 		fmt.Println("连接db成功")
 		Db = db
 	}
-
-	users := make([]User, 0)
-	Db.Find(&users)
-	fmt.Println("dada", users)
-	var t test
-	db.First(&t)
-	fmt.Println("dada", t)
-
-	var t1 test
-	db.Last(&t1)
-	fmt.Println("dada", t1)
-
-	tt := make([]test, 0)
-	db.Find(&tt)
-	fmt.Println("dada", tt)
-
-	uu := make([]User, 0)
-	db.Find(&uu)
-	fmt.Println("dada", uu)
 }
